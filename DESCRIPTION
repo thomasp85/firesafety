@@ -1,0 +1,19 @@
+Package: firesafety
+Title: A collection of security related plugins for fiery
+Version: 0.0.0.9000
+Authors@R:
+    person("Thomas Lin", "Pedersen", , "thomasp85@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-5147-4711"))
+Description: Security is hard and tedious. In order to ease the pain of building
+    secure 'fiery' webservers this package provide a range of plugins that
+    handle different aspects of security. Be aware that security cannot be
+    handled blindly, and even though the plugins here will raise the security of
+    your server you should not build critical infrastructure without the aid of
+    a security expert.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+URL: https://github.com/thomasp85/firesafety
+BugReports: https://github.com/thomasp85/firesafety/issues
+Imports: R6
+RoxygenNote: 7.3.2

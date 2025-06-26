@@ -1,0 +1,23 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# firesafety
+
+<!-- badges: start -->
+
+[![R-CMD-check](https://github.com/thomasp85/firesafety/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/thomasp85/firesafety/actions/workflows/R-CMD-check.yaml)
+[![Codecov test
+coverage](https://codecov.io/gh/thomasp85/firesafety/graph/badge.svg)](https://app.codecov.io/gh/thomasp85/firesafety)
+<!-- badges: end -->
+
+WIP
+
+## Installation
+
+You can install the development version of firesafety from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("thomasp85/firesafety")
+```

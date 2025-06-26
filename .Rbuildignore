@@ -1,0 +1,6 @@
+^README\.Rmd$
+^LICENSE\.md$
+^[\.]?air\.toml$
+^\.vscode$
+^\.github$
+^codecov\.yml$
