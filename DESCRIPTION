@@ -15,5 +15,8 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/thomasp85/firesafety
 BugReports: https://github.com/thomasp85/firesafety/issues
-Imports: R6
+Imports: 
+    cli,
+    R6,
+    rlang (>= 1.1.0)
 RoxygenNote: 7.3.2
