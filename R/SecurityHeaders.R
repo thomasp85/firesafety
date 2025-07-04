@@ -3,8 +3,8 @@
 #' @description
 #' This plugin is inspired by [Helmet.js](https://helmetjs.github.io/) and aids
 #' you in setting response headers relevant for security of your fiery server.
-#' All defaults are taken from Helmet.js as well except for the max-age of the
-#' `Strict-Transport-Security` header which has been doubled to 2 years which is
+#' All defaults are taken from Helmet.js as well, except for the `max-age` of the
+#' `Strict-Transport-Security` header that has been doubled to 2 years which is
 #' the recommendation.
 #'
 #' @details
@@ -18,12 +18,11 @@
 #' This plugin concerns 14 different headers that are in one way or another
 #' implicated in security. Some of them are only relevant if you serve HTML
 #' content on the web and have no effect on e.g. a server providing a REST api.
-#' These have been marked with **UI** below
-#' In that case they can be turned off (by setting them to `NULL`). However, it
-#' is advised that you only steer away from the defaults if you have a good
-#' grasp of the implications. The headers are set very efficiently so removing
-#' some unneeded ones will only have an effect on the size of the response, not
-#' the handling time.
+#' These have been marked with **UI** below. While you may turn these off for a
+#' pure API server (by setting them to `NULL`), it is advised that you only
+#' steer away from the defaults if you have a good grasp of the implications.
+#' The headers are set very efficiently so removing some unneeded ones will only
+#' have an effect on the size of the response, not the handling time.
 #'
 #' ## Headers
 #' ### `Content-Security-Policy` (**UI**)
@@ -51,7 +50,7 @@
 #' ### `Cross-Origin-Embedder-Policy` (**UI**)
 #' This header controls which ressources can be embedded in a document. If set
 #' to e.g. `require-corp` then only ressources that implements CORP or CORS can
-#' be embedded. It is not set by default in Headgear. Read more about this
+#' be embedded. It is not set by default in SecurityHeaders. Read more about this
 #' header at [MDN](https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/Cross-Origin-Embedder-Policy)
 #'
 #' ### `Cross-Origin-Opener-Policy` (**UI**)
@@ -87,7 +86,7 @@
 #' time the ressource is accessed over HTTP it is automatically changed to HTTPS
 #' before the request is made. This header should only be sent over HTTPS to
 #' prevent a manipulator-in-the-middle from alterning its settings. In order for
-#' this to happen Headgear will automatically redirect any HTTP requests to
+#' this to happen SecurityHeaders will automatically redirect any HTTP requests to
 #' HTTPS if this header is set. Read more about this header at
 #' [MDN](https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/Strict-Transport-Security)
 #'
@@ -126,7 +125,7 @@
 #' ### `X-XSS-Protection` (**UI**)
 #' This header has been deprecated in favor of the more powerful
 #' `Content-Security-Policy` header. In fact using XSS filtering can incur a
-#' security vulnerability which is why the default for Headgear is to turn the
+#' security vulnerability which is why the default for SecurityHeaders is to turn the
 #' feature off (by setting `X-XSS-Protection: 0` rather than omitting the
 #' header). Read more about this header at
 #' [MDN](https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/X-XSS-Protection)
@@ -135,16 +134,16 @@
 #' @format NULL
 #'
 #' @section Initialization:
-#' A new 'Headgear'-object is initialized using the \code{new()} method on the
+#' A new 'SecurityHeaders'-object is initialized using the \code{new()} method on the
 #' generator and pass in any settings deviating from the defaults
 #'
 #' \strong{Usage}
 #' \tabular{l}{
-#'  \code{headgear <- Headgear$new(...)}
+#'  \code{security_headers <- SecurityHeaders$new(...)}
 #' }
 #'
 #' @section Fiery plugin:
-#' A Headgear object is a fiery plugin and can be used by passing it to the
+#' A SecurityHeaders object is a fiery plugin and can be used by passing it to the
 #' `attach()` method of the fiery server object. Once attached all requests
 #' created will be prepopulated with the given headers. Any request handler is
 #' permitted to remove one or more of the headers to opt out of them.
@@ -153,7 +152,7 @@
 #'
 #' @examplesIf requireNamespace("fiery", quietly = TRUE)
 #' # Create a plugin that turns off UI-related security headers
-#' headgear <- Headgear$public_methods$initialize(
+#' security_headers <- SecurityHeaders$new(
 #'   content_security_policy = NULL,
 #'   cross_origin_embedder_policy = NULL,
 #'   cross_origin_opener_policy = NULL,
@@ -168,12 +167,12 @@
 #' # Use it with a fiery server
 #' app <- fiery::Fire$new()
 #'
-#' app$attach(headgear)
+#' app$attach(security_headers)
 #'
-Headgear <- R6::R6Class(
-  "Headgear",
+SecurityHeaders <- R6::R6Class(
+  "SecurityHeaders",
   public = list(
-    #' @description Initialize a new Headgear object
+    #' @description Initialize a new SecurityHeaders object
     #' @param content_security_policy Set the value of the `Content-Security-Policy`
     #' header. See [csp()] for documentation of its values
     #' @param content_security_policy_report_only Set the value of the
@@ -216,13 +215,13 @@ Headgear <- R6::R6Class(
     #'
     initialize = function(
       content_security_policy = csp(
-        default = "self",
-        script = "self",
-        script_attr = "none",
-        style = c("self", "https:", "unsafe-inline"),
-        img = c("self", "data:"),
-        font = c("self", "https:", "data:"),
-        object = "none",
+        default_srd = "self",
+        script_src = "self",
+        script_src_attr = "none",
+        style_src = c("self", "https:", "unsafe-inline"),
+        img_src = c("self", "data:"),
+        font_src = c("self", "https:", "data:"),
+        object_src = "none",
         base_uri = "self",
         form_action = "self",
         frame_ancestor = "self",
@@ -278,7 +277,7 @@ Headgear <- R6::R6Class(
 
       if (must_upgrade) {
         if (is.null(app$plugins$header_routr)) {
-          rs <- routr::RouteStack()
+          rs <- routr::RouteStack$new()
           rs$attach_to <- "header"
           app$attach(rs)
         }
@@ -449,7 +448,9 @@ Headgear <- R6::R6Class(
           isTRUE(value$preload) &&
             !(value$max_age >= 31536000 && isTRUE(value$include_sub_domains))
         ) {
-          cli::cli_abort("{.arg preload} can only be set if {.code include_sub_domains == TRUE} and {.code max_age >= 31536000}")
+          cli::cli_abort(
+            "{.arg preload} can only be set if {.code include_sub_domains == TRUE} and {.code max_age >= 31536000}"
+          )
         }
       }
       private$STS <- value
@@ -532,6 +533,10 @@ Headgear <- R6::R6Class(
       }
       check_bool(value, allow_null = TRUE)
       private$XXP <- value
+    },
+    #' @field name The name of the plugin
+    name = function() {
+      "security_headers"
     }
   ),
   private = list(
@@ -557,7 +562,11 @@ Headgear <- R6::R6Class(
         if ("report_to" %in% names(csp)) {
           csp$report_uri <- csp$report_to
           csp$report_to <- "csp-endpoint"
-          headers[["reporting-endpoints"]] <- paste0("csp-endpoint=\"", csp$report_uri, "\"")
+          headers[["reporting-endpoints"]] <- paste0(
+            "csp-endpoint=\"",
+            csp$report_uri,
+            "\""
+          )
         }
         headers[["content-security-policy"]] <- paste(
           gsub("_", "-", names(csp)),
@@ -570,10 +579,13 @@ Headgear <- R6::R6Class(
         if ("report_to" %in% names(csp)) {
           csp$report_uri <- csp$report_to
           csp$report_to <- "cspro-endpoint"
-          headers[["reporting-endpoints"]] <- paste0(c(
-            headers[["reporting-endpoints"]],
-            paste0("cspro-endpoint=\"", csp$report_uri, "\"")
-          ), collapse = ", ")
+          headers[["reporting-endpoints"]] <- paste0(
+            c(
+              headers[["reporting-endpoints"]],
+              paste0("cspro-endpoint=\"", csp$report_uri, "\"")
+            ),
+            collapse = ", "
+          )
         }
         headers[["content-security-policy-report-only"]] <- paste(
           gsub("_", "-", names(csp)),

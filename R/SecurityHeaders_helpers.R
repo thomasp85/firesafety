@@ -79,13 +79,13 @@ sts <- function(max_age, include_sub_domains = NULL, preload = NULL) {
 #' @examples
 #' # Default setting
 #' csp(
-#'   default = "self",
-#'   script = "self",
-#'   script_attr = "none",
-#'   style = c("self", "https:", "unsafe-inline"),
-#'   img = c("self", "data:"),
-#'   font = c("self", "https:", "data:"),
-#'   object = "none",
+#'   default_src = "self",
+#'   script_src = "self",
+#'   script_src_attr = "none",
+#'   style_src = c("self", "https:", "unsafe-inline"),
+#'   img_src = c("self", "data:"),
+#'   font_src = c("self", "https:", "data:"),
+#'   object_src = "none",
 #'   base_uri = "self",
 #'   form_action = "self",
 #'   frame_ancestor = "self",

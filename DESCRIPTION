@@ -18,5 +18,8 @@ BugReports: https://github.com/thomasp85/firesafety/issues
 Imports: 
     cli,
     R6,
-    rlang (>= 1.1.0)
+    rlang (>= 1.1.0),
+    routr
 RoxygenNote: 7.3.2
+Suggests: 
+    fiery
