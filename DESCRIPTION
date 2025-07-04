@@ -19,7 +19,9 @@ Imports:
     cli,
     R6,
     rlang (>= 1.1.0),
-    routr
+    routr (>= 0.4.1.9000)
 RoxygenNote: 7.3.2
 Suggests: 
     fiery
+Remotes:  
+    thomasp85/routr
