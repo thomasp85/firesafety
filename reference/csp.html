@@ -45,7 +45,7 @@ for more information on the header"><!-- mathjax --><script src="https://cdnjs.c
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Construct settings for the <code>Content-Security-Policy</code> header</h1>
-    <small class="dont-index">Source: <a href="https://github.com/thomasp85/firesafety/blob/main/R/headgear_helpers.R" class="external-link"><code>R/headgear_helpers.R</code></a></small>
+    <small class="dont-index">Source: <a href="https://github.com/thomasp85/firesafety/blob/main/R/SecurityHeaders_helpers.R" class="external-link"><code>R/SecurityHeaders_helpers.R</code></a></small>
     <div class="hidden name"><code>csp.Rd</code></div>
     </div>
 
@@ -210,19 +210,96 @@ document as if they were HTTPS</p></dd>
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="co"># Default setting</span></span></span>
 <span class="r-in"><span><span class="fu">csp</span><span class="op">(</span></span></span>
-<span class="r-in"><span>  default <span class="op">=</span> <span class="st">"self"</span>,</span></span>
-<span class="r-in"><span>  script <span class="op">=</span> <span class="st">"self"</span>,</span></span>
-<span class="r-in"><span>  script_attr <span class="op">=</span> <span class="st">"none"</span>,</span></span>
-<span class="r-in"><span>  style <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"self"</span>, <span class="st">"https:"</span>, <span class="st">"unsafe-inline"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  img <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"self"</span>, <span class="st">"data:"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  font <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"self"</span>, <span class="st">"https:"</span>, <span class="st">"data:"</span><span class="op">)</span>,</span></span>
-<span class="r-in"><span>  object <span class="op">=</span> <span class="st">"none"</span>,</span></span>
+<span class="r-in"><span>  default_src <span class="op">=</span> <span class="st">"self"</span>,</span></span>
+<span class="r-in"><span>  script_src <span class="op">=</span> <span class="st">"self"</span>,</span></span>
+<span class="r-in"><span>  script_src_attr <span class="op">=</span> <span class="st">"none"</span>,</span></span>
+<span class="r-in"><span>  style_src <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"self"</span>, <span class="st">"https:"</span>, <span class="st">"unsafe-inline"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  img_src <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"self"</span>, <span class="st">"data:"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  font_src <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"self"</span>, <span class="st">"https:"</span>, <span class="st">"data:"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>  object_src <span class="op">=</span> <span class="st">"none"</span>,</span></span>
 <span class="r-in"><span>  base_uri <span class="op">=</span> <span class="st">"self"</span>,</span></span>
 <span class="r-in"><span>  form_action <span class="op">=</span> <span class="st">"self"</span>,</span></span>
 <span class="r-in"><span>  frame_ancestor <span class="op">=</span> <span class="st">"self"</span>,</span></span>
 <span class="r-in"><span>  upgrade_insecure_requests <span class="op">=</span> <span class="cn">TRUE</span></span></span>
 <span class="r-in"><span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in csp(default = "self", script = "self", script_attr = "none",     style = c("self", "https:", "unsafe-inline"), img = c("self",         "data:"), font = c("self", "https:", "data:"), object = "none",     base_uri = "self", form_action = "self", frame_ancestor = "self",     upgrade_insecure_requests = TRUE):</span> argument 2 matches multiple formal arguments</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $child_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $connect_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $default_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "self"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $fenced_frame_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $font_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "self"   "https:" "data:" </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $frame_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $img_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "self"  "data:"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $manifest_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $media_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $object_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "none"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $prefetch_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $script_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "self"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $script_src_elem</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $script_src_attr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "none"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $style_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "self"          "https:"        "unsafe-inline"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $style_src_elem</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $style_src_attr</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $worker_src</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $base_uri</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "self"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $sandbox</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $form_action</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "self"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $frame_ancestors</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] "self"</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $report_to</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $require_trusted_types_for</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $trusted_types</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> NULL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> $upgrade_insecure_requests</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> [1] ""</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>

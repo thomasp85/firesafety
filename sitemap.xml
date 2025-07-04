@@ -5,7 +5,9 @@
 <url><loc>/LICENSE.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
-<url><loc>/reference/Headgear.html</loc></url>
+<url><loc>/reference/CORS.html</loc></url>
+<url><loc>/reference/ResourceIsolation.html</loc></url>
+<url><loc>/reference/SecurityHeaders.html</loc></url>
 <url><loc>/reference/csp.html</loc></url>
 <url><loc>/reference/firesafety-package.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
