@@ -115,10 +115,10 @@ ResourceIsolation <- R6::R6Class(
       forbidden_navigation = c("object", "embed"),
       allow_cors = TRUE
     ) {
+      allowed_site <- tolower(allowed_site)
       allowed_site <- arg_match0(
-        tolower(allowed_site),
-        site_values,
-        "allowed_site"
+        allowed_site,
+        site_values
       )
       allowed_site <- match(allowed_site, site_values)
       allowed_site <- c(site_values[-seq_len(allowed_site - 1)], "none")

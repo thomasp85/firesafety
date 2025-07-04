@@ -172,11 +172,11 @@ CORS <- R6::R6Class(
     ) {
       check_string(path)
       origin_fun <- private$make_origin_fun(origin)
+      methods <- tolower(methods)
       methods <- arg_match(
-        tolower(methods),
+        methods,
         c(http_methods, "all"),
-        multiple = TRUE,
-        error_arg = "methods"
+        multiple = TRUE
       )
       if ("all" %in% methods) {
         methods <- http_methods
