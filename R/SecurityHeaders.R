@@ -281,8 +281,11 @@ SecurityHeaders <- R6::R6Class(
           rs$attach_to <- "header"
           app$attach(rs)
         }
-        upgrade_route <- routr::Route$new(
-          any = list("/" = function(request, response, ...) {
+        upgrade_route <- routr::Route$new()
+        upgrade_route$add_handler(
+          "all",
+          "/*",
+          function(request, response, ...) {
             if (request$protocol != "https") {
               response <- request$respond()
               response$status <- 308L
@@ -295,7 +298,7 @@ SecurityHeaders <- R6::R6Class(
             } else {
               TRUE
             }
-          })
+          }
         )
         app$plugins$header_routr$add_route(upgrade_route, "upgrade_protocol")
       }
