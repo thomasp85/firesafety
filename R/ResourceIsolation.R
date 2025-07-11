@@ -163,7 +163,7 @@ ResourceIsolation <- R6::R6Class(
         rs$attach_to <- "header"
         app$attach(rs)
       }
-      app$plugins$header_routr$add_route(private$ROUTE, "resource_isolation")
+      app$plugins$header_routr$add_route(private$ROUTE, "resource_isolation", after = 0)
     }
   ),
   active = list(

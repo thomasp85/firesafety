@@ -269,13 +269,13 @@ CORS <- R6::R6Class(
         rs$attach_to <- "header"
         app$attach(rs)
       }
-      app$plugins$header_routr$add_route(private$OPTIONS_ROUTE, "cors_options")
+      app$plugins$header_routr$add_route(private$OPTIONS_ROUTE, "cors_options", after = 0)
       if (is.null(app$plugins$request_routr)) {
         rs <- routr::RouteStack$new()
         rs$attach_to <- "request"
         app$attach(rs)
       }
-      app$plugins$request_routr$add_route(private$MAIN_ROUTE, "cors_main")
+      app$plugins$request_routr$add_route(private$MAIN_ROUTE, "cors_main", after = 0)
     }
   ),
   active = list(
