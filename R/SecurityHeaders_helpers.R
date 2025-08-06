@@ -88,7 +88,7 @@ sts <- function(max_age, include_sub_domains = NULL, preload = NULL) {
 #'   object_src = "none",
 #'   base_uri = "self",
 #'   form_action = "self",
-#'   frame_ancestor = "self",
+#'   frame_ancestors = "self",
 #'   upgrade_insecure_requests = TRUE
 #' )
 #'
@@ -172,7 +172,7 @@ csp_directives <- list(
   "base_uri",
   "sandbox",
   "form_action",
-  "frame_ancestor",
+  "frame_ancestors",
   "report_to",
   "require_trusted_types_for",
   "trusted_types",

@@ -215,7 +215,7 @@ SecurityHeaders <- R6::R6Class(
     #'
     initialize = function(
       content_security_policy = csp(
-        default_srd = "self",
+        default_src = "self",
         script_src = "self",
         script_src_attr = "none",
         style_src = c("self", "https:", "unsafe-inline"),
@@ -224,7 +224,7 @@ SecurityHeaders <- R6::R6Class(
         object_src = "none",
         base_uri = "self",
         form_action = "self",
-        frame_ancestor = "self",
+        frame_ancestors = "self",
         upgrade_insecure_requests = TRUE
       ),
       content_security_policy_report_only = NULL,
