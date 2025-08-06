@@ -345,7 +345,7 @@ SecurityHeaders <- R6::R6Class(
           )
         )
       }
-      private$COOP <- value
+      private$COEP <- value
     },
     #' @field cross_origin_opener_policy Set or get the value of the
     #' `Cross-Origin-Opener-Policy`. Possible values are `"unsafe-none"`,
@@ -486,7 +486,7 @@ SecurityHeaders <- R6::R6Class(
         return(private$XDO)
       }
       check_bool(value, allow_null = TRUE)
-      private$XCTO <- value
+      private$XDO <- value
     },
     #' @field x_frame_options Set or get the value of the
     #' `X-Frame-Options`. Possible values are `"DENY"` and `"SAMEORIGIN"`

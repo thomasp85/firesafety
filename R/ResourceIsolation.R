@@ -121,7 +121,7 @@ ResourceIsolation <- R6::R6Class(
         site_values
       )
       allowed_site <- match(allowed_site, site_values)
-      allowed_site <- c(site_values[-seq_len(allowed_site - 1)], "none")
+      allowed_site <- c(site_values[allowed_site:length(site_values)], "none")
 
       forbidden_navigation <- tolower(forbidden_navigation %||% character())
       if (isTRUE(forbidden_navigation == "all")) {
@@ -163,7 +163,11 @@ ResourceIsolation <- R6::R6Class(
         rs$attach_to <- "header"
         app$attach(rs)
       }
-      app$plugins$header_routr$add_route(private$ROUTE, "resource_isolation", after = 0)
+      app$plugins$header_routr$add_route(
+        private$ROUTE,
+        "resource_isolation",
+        after = 0
+      )
     }
   ),
   active = list(
@@ -223,4 +227,4 @@ dest_values <- c(
   "worker",
   "xslt"
 )
-site_values <- c("cross-site", "same-site", "same_origin")
+site_values <- c("cross-site", "same-site", "same-origin")

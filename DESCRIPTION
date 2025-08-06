@@ -15,13 +15,17 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 URL: https://github.com/thomasp85/firesafety
 BugReports: https://github.com/thomasp85/firesafety/issues
-Imports: 
+Imports:
     cli,
     R6,
     rlang (>= 1.1.0),
     routr (>= 0.4.1.9000)
 RoxygenNote: 7.3.2
-Suggests: 
-    fiery
-Remotes:  
-    thomasp85/routr
+Suggests:
+    fiery,
+    testthat (>= 3.0.0)
+Remotes:
+    thomasp85/routr,
+    thomasp85/reqres,
+    thomasp85/fiery
+Config/testthat/edition: 3

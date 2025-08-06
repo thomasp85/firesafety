@@ -366,7 +366,7 @@ validate_csp <- function(csp, call = caller_env()) {
         superseeded <- which(val_match %in% ignore_ind)
         if (length(superseeded) != 0) {
           cli::cli_warn(
-            "{.val {csp[[directive]][superseeded]}} are superseeded by csp[[directive]][i] in {.field {directive}}. Ignoring"
+            "{.val {csp[[directive]][superseeded]}} are superseeded by {csp[[directive]][i]} in {.field {directive}}. Ignoring"
           )
           remove <- c(remove, superseeded)
         }

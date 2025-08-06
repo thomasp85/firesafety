@@ -269,13 +269,21 @@ CORS <- R6::R6Class(
         rs$attach_to <- "header"
         app$attach(rs)
       }
-      app$plugins$header_routr$add_route(private$OPTIONS_ROUTE, "cors_options", after = 0)
+      app$plugins$header_routr$add_route(
+        private$OPTIONS_ROUTE,
+        "cors_options",
+        after = 0
+      )
       if (is.null(app$plugins$request_routr)) {
         rs <- routr::RouteStack$new()
         rs$attach_to <- "request"
         app$attach(rs)
       }
-      app$plugins$request_routr$add_route(private$MAIN_ROUTE, "cors_main", after = 0)
+      app$plugins$request_routr$add_route(
+        private$MAIN_ROUTE,
+        "cors_main",
+        after = 0
+      )
     }
   ),
   active = list(
@@ -289,13 +297,11 @@ CORS <- R6::R6Class(
     MAIN_ROUTE = NULL,
 
     make_origin_fun = function(origin, call = caller_env()) {
-      origin <- tolower(origin)
       if (isFALSE(origin)) {
         function(request) {
           "false"
         }
-      }
-      if (identical(origin, "*")) {
+      } else if (identical(origin, "*")) {
         function(request) {
           "*"
         }
@@ -304,6 +310,7 @@ CORS <- R6::R6Class(
           request$get_header("origin")
         }
       } else if (is_bare_character(origin)) {
+        origin <- tolower(origin)
         function(request) {
           req_orig <- request$get_header("origin")
           if (tolower(req_orig) %in% origin) {
