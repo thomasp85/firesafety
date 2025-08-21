@@ -65,7 +65,6 @@ requests will be passed through the plugin and the policy applied to it
 }
 
 \examples{
-\dontshow{if (requireNamespace("fiery", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Create resource isolation policy denying all navigation requests
 resource_isolation <- ResourceIsolation$new(forbidden_navigation = "all")
 
@@ -75,6 +74,7 @@ resource_isolation$add_path(
   allowed_site = "cross-site"
 )
 
+\dontshow{if (requireNamespace("fiery", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Use it in a fiery server
 app <- fiery::Fire$new()
 

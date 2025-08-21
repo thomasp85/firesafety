@@ -56,7 +56,7 @@
 #'
 #' @export
 #'
-#' @examplesIf requireNamespace("fiery", quietly = TRUE)
+#' @examples
 #' # Setup CORS for a sub path allowing access from www.trustworthy.com
 #' # Tell the browser to cache the preflight for a day
 #' cors <- CORS$new(
@@ -66,6 +66,7 @@
 #'   max_age = 86400
 #' )
 #'
+#' @examplesIf requireNamespace("fiery", quietly = TRUE)
 #' # Use it in a fiery server
 #' app <- fiery::Fire$new()
 #'

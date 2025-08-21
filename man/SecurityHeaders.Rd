@@ -279,10 +279,10 @@ Initialize a new SecurityHeaders object
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SecurityHeaders$new(
   content_security_policy = csp(default_src = "self", script_src = "self",
-    script_src_attr = "none", style_src = c("self", "https:"), img_src = c("self",
-    "data:"), font_src = c("self", "https:", "data:"), object_src = "none", base_uri =
-    "self", form_action = "self", frame_ancestors = "self", upgrade_insecure_requests =
-    TRUE),
+    script_src_attr = "none", style_src = c("self", "https:", "unsafe-inline"), img_src =
+    c("self", "data:"), font_src = c("self", "https:", "data:"), object_src = "none",
+    base_uri = "self", form_action = "self", frame_ancestors = "self",
+    upgrade_insecure_requests = TRUE),
   content_security_policy_report_only = NULL,
   cross_origin_embedder_policy = NULL,
   cross_origin_opener_policy = "same-origin",

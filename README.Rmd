@@ -20,13 +20,72 @@ knitr::opts_chunk$set(
 [![Codecov test coverage](https://codecov.io/gh/thomasp85/firesafety/graph/badge.svg)](https://app.codecov.io/gh/thomasp85/firesafety)
 <!-- badges: end -->
 
-WIP
+This package contains a collections of plugins for [fiery](https://fiery.data-imaginist.com) that handles server-side security in different ways. Currently it contains:
+
+### `SecurityHeaders`
+Inspired by [helmet.js](https://helmetjs.github.io), this plugin will configure and set a range of security related headers on all outgoing responses.
+
+### `CORS`
+This plugin will help you set up Cross-Origin-Resource-Sharing (CORS) for one or more paths in your server.
+
+### `ResourceIsolation`
+This plugin lets you configure Resource Isolation Policies for one or more paths in your server.
 
 ## Installation
 
-You can install the development version of firesafety from [GitHub](https://github.com/) with:
-
 ``` r
-# install.packages("pak")
+# You can install marquee from CRAN
+pak::pak("firesafety")
+
+# Or get the development version from Github
 pak::pak("thomasp85/firesafety")
+```
+
+## Examples
+Using the plugins is straightforward as they all come with sensible defaults that serve as a good starting point. Remember the best security is _as strict as your functionality allows_. If you find that your server logic no longer works after adding these any of these plugins, investigate why, and relax the settings for the specific area that is causing issues.
+
+```{r}
+app <- fiery::Fire$new()
+
+# Set security headers but remove those related to UI (we assume this is a REST
+# server) and rely on defaults for the rest
+headers <- firesafety::SecurityHeaders$new(
+  content_security_policy = NULL,
+  cross_origin_embedder_policy = NULL,
+  cross_origin_opener_policy = NULL,
+  origin_agent_cluster = NULL,
+  referrer_policy = NULL,
+  x_dns_prefetch_control = NULL,
+  x_download_options = NULL,
+  x_frame_options = NULL,
+  x_xss_protection = NULL
+)
+
+# decrease the max age of STS after creation
+headers$strict_transport_security <- firesafety::sts(
+  max_age = 31536000 # 1 year
+)
+
+# Add to server
+app$attach(headers)
+
+# Set up CORS for a subset of paths
+cors <- firesafety::CORS$new(
+  path = "global/*",
+  origin = "https://my-other-website.com"
+)
+
+# Add to server
+app$attach(cors)
+
+# Set up RIP for a path and its subpaths
+rip <- firesafety::ResourceIsolation$new(
+  path = "assets/*",
+  allowed_site = "same-origin"
+)
+
+# Add to server
+app$attach(rip)
+
+app
 ```

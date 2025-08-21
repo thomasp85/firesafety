@@ -60,7 +60,7 @@
 #'
 #' @export
 #'
-#' @examplesIf requireNamespace("fiery", quietly = TRUE)
+#' @examples
 #' # Create resource isolation policy denying all navigation requests
 #' resource_isolation <- ResourceIsolation$new(forbidden_navigation = "all")
 #'
@@ -70,6 +70,7 @@
 #'   allowed_site = "cross-site"
 #' )
 #'
+#' @examplesIf requireNamespace("fiery", quietly = TRUE)
 #' # Use it in a fiery server
 #' app <- fiery::Fire$new()
 #'
