@@ -182,7 +182,6 @@ permitted to remove one or more of the headers to opt out of them.
 }
 
 \examples{
-\dontshow{if (requireNamespace("fiery", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Create a plugin that turns off UI-related security headers
 security_headers <- SecurityHeaders$new(
   content_security_policy = NULL,
@@ -196,6 +195,7 @@ security_headers <- SecurityHeaders$new(
   x_xss_protection = NULL
 )
 
+\dontshow{if (requireNamespace("fiery", quietly = TRUE)) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 # Use it with a fiery server
 app <- fiery::Fire$new()
 
@@ -278,11 +278,11 @@ values}
 Initialize a new SecurityHeaders object
 \subsection{Usage}{
 \if{html}{\out{<div class="r">}}\preformatted{SecurityHeaders$new(
-  content_security_policy = csp(default_srd = "self", script_src = "self",
-    script_src_attr = "none", style_src = c("self", "https:", "unsafe-inline"), img_src =
-    c("self", "data:"), font_src = c("self", "https:", "data:"), object_src = "none",
-    base_uri = "self", form_action = "self", frame_ancestor = "self",
-    upgrade_insecure_requests = TRUE),
+  content_security_policy = csp(default_src = "self", script_src = "self",
+    script_src_attr = "none", style_src = c("self", "https:"), img_src = c("self",
+    "data:"), font_src = c("self", "https:", "data:"), object_src = "none", base_uri =
+    "self", form_action = "self", frame_ancestors = "self", upgrade_insecure_requests =
+    TRUE),
   content_security_policy_report_only = NULL,
   cross_origin_embedder_policy = NULL,
   cross_origin_opener_policy = "same-origin",

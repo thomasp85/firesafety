@@ -113,7 +113,7 @@ csp(
   object_src = "none",
   base_uri = "self",
   form_action = "self",
-  frame_ancestor = "self",
+  frame_ancestors = "self",
   upgrade_insecure_requests = TRUE
 )
 

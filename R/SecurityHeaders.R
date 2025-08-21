@@ -150,7 +150,7 @@
 #'
 #' @export
 #'
-#' @examplesIf requireNamespace("fiery", quietly = TRUE)
+#' @examples
 #' # Create a plugin that turns off UI-related security headers
 #' security_headers <- SecurityHeaders$new(
 #'   content_security_policy = NULL,
@@ -164,6 +164,7 @@
 #'   x_xss_protection = NULL
 #' )
 #'
+#' @examplesIf requireNamespace("fiery", quietly = TRUE)
 #' # Use it with a fiery server
 #' app <- fiery::Fire$new()
 #'

@@ -4,9 +4,9 @@
 \name{firesafety-package}
 \alias{firesafety}
 \alias{firesafety-package}
-\title{firesafety: A collection of security related plugins for fiery}
+\title{firesafety: A Collection of Security Related Plugins for 'fiery'}
 \description{
-Security is hard and tedious. In order to ease the pain of building secure 'fiery' webservers this package provide a range of plugins that handle different aspects of security. Be aware that security cannot be handled blindly, and even though the plugins here will raise the security of your server you should not build critical infrastructure without the aid of a security expert.
+Provide a range of plugins for 'fiery' web servers that handle different aspects of server-side web security. Be aware that security cannot be handled blindly, and even though these plugins will raise the security of your server you should not build critical infrastructure without the aid of a security expert.
 }
 \seealso{
 Useful links:
