@@ -55,8 +55,8 @@ information on this header at
 
 \subsection{\code{Cross-Origin-Embedder-Policy} (\strong{UI})}{
 
-This header controls which ressources can be embedded in a document. If set
-to e.g. \code{require-corp} then only ressources that implements CORP or CORS can
+This header controls which resources can be embedded in a document. If set
+to e.g. \code{require-corp} then only resources that implements CORP or CORS can
 be embedded. It is not set by default in SecurityHeaders. Read more about this
 header at \href{https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/Cross-Origin-Embedder-Policy}{MDN}
 }
@@ -69,19 +69,19 @@ as XS-Leaks. Read more about this header at \href{https://developer.mozilla.org/
 and about XS-Leaks \href{https://developer.mozilla.org/docs/Web/Security/Attacks/XS-Leaks}{in the security guide}
 }
 
-\subsection{\code{Cross-Origin-Ressource-Policy}}{
+\subsection{\code{Cross-Origin-Resource-Policy}}{
 
 This header controls where the given response can be used. If you e.g. return
-an image along with \code{Cross-Origin-Ressource-Policy: same-site}, then this
+an image along with \code{Cross-Origin-Resource-Policy: same-site}, then this
 image is blocked from being loaded by other sites.
-Read more about this header at \href{https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/Cross-Origin-Ressource-Policy}{MDN}
+Read more about this header at \href{https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/Cross-Origin-Resource-Policy}{MDN}
 and about CORP in general \href{https://developer.mozilla.org/docs/Web/Security/Practical_implementation_guides/CORP}{in the security guide}
 }
 
 \subsection{\code{Origin-Agent-Cluster} (\strong{UI})}{
 
 This header helps isolate documents served from the same site into separate
-processes. This can improve performance of other tabs if a ressource
+processes. This can improve performance of other tabs if a resource
 intensive tab is opened but also prevent certain information from being
 available to code running in the tab. Read more about this header at
 \href{https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/Origin-Agent-Cluster}{MDN}
@@ -98,9 +98,9 @@ as well as the \href{https://developer.mozilla.org/docs/Web/Security/Referer_hea
 
 \subsection{\code{Strict-Transport-Security}}{
 
-This header informs a browser that the given ressource should only be
+This header informs a browser that the given resource should only be
 accessed using HTTPS. This preference is cached by the browser and the next
-time the ressource is accessed over HTTP it is automatically changed to HTTPS
+time the resource is accessed over HTTP it is automatically changed to HTTPS
 before the request is made. This header should only be sent over HTTPS to
 prevent a manipulator-in-the-middle from alterning its settings. In order for
 this to happen SecurityHeaders will automatically redirect any HTTP requests to
@@ -144,7 +144,7 @@ more about this header at \href{https://developer.mozilla.org/docs/Web/HTTP/Refe
 
 \subsection{\code{X-Permitted-Cross-Domain-Policies}}{
 
-This header controls cross-origin access of a ressource from a document
+This header controls cross-origin access of a resource from a document
 running in a web client such as Adobe Flash Player or Microsoft Silverlight.
 The demise of these technologies have made this header less important. Read
 more about this header at \href{https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/X-Permitted-Cross-Domain-Policies}{MDN}
