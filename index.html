@@ -5,14 +5,14 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>A collection of security related plugins for fiery • firesafety</title>
+<title>A Collection of Security Related Plugins for fiery • firesafety</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="bootstrap-toc.css">
 <script src="bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script><meta property="og:title" content="A collection of security related plugins for fiery">
-<meta property="og:description" content="Security is hard and tedious. In order to ease the pain of building secure fiery webservers this package provide a range of plugins that handle different aspects of security. Be aware that security cannot be handled blindly, and even though the plugins here will raise the security of your server you should not build critical infrastructure without the aid of a security expert.">
+<script src="pkgdown.js"></script><meta property="og:title" content="A Collection of Security Related Plugins for fiery">
+<meta property="og:description" content="Provide a range of plugins for fiery web servers that handle different aspects of server-side web security. Be aware that security cannot be handled blindly, and even though these plugins will raise the security of your server you should not build critical infrastructure without the aid of a security expert.">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -42,6 +42,9 @@
 <li>
   <a href="reference/index.html">Reference</a>
 </li>
+<li>
+  <a href="news/index.html">Changelog</a>
+</li>
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
@@ -67,14 +70,94 @@
 </h1></div>
 <!-- badges: start -->
 
-<p>WIP</p>
+<p>This package contains a collections of plugins for <a href="https://fiery.data-imaginist.com" class="external-link">fiery</a> that handles server-side security in different ways. Currently it contains:</p>
+<div class="section level3">
+<h3 id="securityheaders">
+<code>SecurityHeaders</code><a class="anchor" aria-label="anchor" href="#securityheaders"></a>
+</h3>
+<p>Inspired by <a href="https://helmetjs.github.io" class="external-link">helmet.js</a>, this plugin will configure and set a range of security related headers on all outgoing responses.</p>
+</div>
+<div class="section level3">
+<h3 id="cors">
+<code>CORS</code><a class="anchor" aria-label="anchor" href="#cors"></a>
+</h3>
+<p>This plugin will help you set up Cross-Origin-Resource-Sharing (CORS) for one or more paths in your server.</p>
+</div>
+<div class="section level3">
+<h3 id="resourceisolation">
+<code>ResourceIsolation</code><a class="anchor" aria-label="anchor" href="#resourceisolation"></a>
+</h3>
+<p>This plugin lets you configure Resource Isolation Policies for one or more paths in your server.</p>
+</div>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
-<p>You can install the development version of firesafety from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<code class="sourceCode R"><span><span class="co"># You can install marquee from CRAN</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"firesafety"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Or get the development version from Github</span></span>
 <span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"thomasp85/firesafety"</span><span class="op">)</span></span></code></pre></div>
+</div>
+<div class="section level2">
+<h2 id="examples">Examples<a class="anchor" aria-label="anchor" href="#examples"></a>
+</h2>
+<p>Using the plugins is straightforward as they all come with sensible defaults that serve as a good starting point. Remember the best security is <em>as strict as your functionality allows</em>. If you find that your server logic no longer works after adding these any of these plugins, investigate why, and relax the settings for the specific area that is causing issues.</p>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">app</span> <span class="op">&lt;-</span> <span class="fu">fiery</span><span class="fu">::</span><span class="va"><a href="https://fiery.data-imaginist.com/reference/Fire.html" class="external-link">Fire</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Set security headers but remove those related to UI (we assume this is a REST</span></span>
+<span><span class="co"># server) and rely on defaults for the rest</span></span>
+<span><span class="va">headers</span> <span class="op">&lt;-</span> <span class="fu">firesafety</span><span class="fu">::</span><span class="va"><a href="reference/SecurityHeaders.html">SecurityHeaders</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  content_security_policy <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  cross_origin_embedder_policy <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  cross_origin_opener_policy <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  origin_agent_cluster <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  referrer_policy <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  x_dns_prefetch_control <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  x_download_options <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  x_frame_options <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  x_xss_protection <span class="op">=</span> <span class="cn">NULL</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># decrease the max age of STS after creation</span></span>
+<span><span class="va">headers</span><span class="op">$</span><span class="va">strict_transport_security</span> <span class="op">&lt;-</span> <span class="fu">firesafety</span><span class="fu">::</span><span class="fu"><a href="reference/sts.html">sts</a></span><span class="op">(</span></span>
+<span>  max_age <span class="op">=</span> <span class="fl">31536000</span> <span class="co"># 1 year</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add to server</span></span>
+<span><span class="va">app</span><span class="op">$</span><span class="kw">attach</span><span class="op">(</span><span class="va">headers</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Set up CORS for a subset of paths</span></span>
+<span><span class="va">cors</span> <span class="op">&lt;-</span> <span class="fu">firesafety</span><span class="fu">::</span><span class="va"><a href="reference/CORS.html">CORS</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  path <span class="op">=</span> <span class="st">"global/*"</span>,</span>
+<span>  origin <span class="op">=</span> <span class="st">"https://my-other-website.com"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add to server</span></span>
+<span><span class="va">app</span><span class="op">$</span><span class="kw">attach</span><span class="op">(</span><span class="va">cors</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Set up RIP for a path and its subpaths</span></span>
+<span><span class="va">rip</span> <span class="op">&lt;-</span> <span class="fu">firesafety</span><span class="fu">::</span><span class="va"><a href="reference/ResourceIsolation.html">ResourceIsolation</a></span><span class="op">$</span><span class="fu">new</span><span class="op">(</span></span>
+<span>  path <span class="op">=</span> <span class="st">"assets/*"</span>,</span>
+<span>  allowed_site <span class="op">=</span> <span class="st">"same-origin"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Add to server</span></span>
+<span><span class="va">app</span><span class="op">$</span><span class="kw">attach</span><span class="op">(</span><span class="va">rip</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">app</span></span>
+<span><span class="co">#&gt; 🔥 A fiery webserver</span></span>
+<span><span class="co">#&gt; 🔥  💥   💥   💥</span></span>
+<span><span class="co">#&gt; 🔥           Running on: 127.0.0.1:8080</span></span>
+<span><span class="co">#&gt; 🔥     Plugins attached: header_routr</span></span>
+<span><span class="co">#&gt; 🔥                       security_headers</span></span>
+<span><span class="co">#&gt; 🔥                       request_routr</span></span>
+<span><span class="co">#&gt; 🔥                       cors</span></span>
+<span><span class="co">#&gt; 🔥                       resource_isolation</span></span>
+<span><span class="co">#&gt; 🔥 Event handlers added</span></span>
+<span><span class="co">#&gt; 🔥               header: 1</span></span>
+<span><span class="co">#&gt; 🔥              request: 1</span></span></code></pre></div>
 </div>
 </div>
   </div>
@@ -114,6 +197,7 @@
 <h2 data-toc-skip>Developers</h2>
 <ul class="list-unstyled">
 <li>Thomas Lin Pedersen <br><small class="roles"> Author, maintainer </small> <a href="https://orcid.org/0000-0002-5147-4711" target="orcid.widget" aria-label="ORCID" class="external-link"><span class="fab fa-orcid orcid" aria-hidden="true"></span></a>  </li>
+<li>Posit Software, PBC <br><small class="roles"> Copyright holder, funder </small>  <a href="https://ror.org/03wc8by49" class="external-link"><img src="https://raw.githubusercontent.com/ror-community/ror-logos/main/ror-icon-rgb.svg" class="ror" alt="ROR"></a> </li>
 </ul>
 </div>
 
@@ -131,7 +215,7 @@
 
       <footer><div class="copyright">
   <p></p>
-<p>Developed by Thomas Lin Pedersen.</p>
+<p>Developed by Thomas Lin Pedersen, Posit Software, PBC.</p>
 </div>
 
 <div class="pkgdown">
