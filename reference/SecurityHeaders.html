@@ -112,8 +112,8 @@ information on this header at
 <h4 id="cross-origin-embedder-policy-ui-"><code>Cross-Origin-Embedder-Policy</code> (<strong>UI</strong>)<a class="anchor" aria-label="anchor" href="#cross-origin-embedder-policy-ui-"></a></h4>
 
 
-<p>This header controls which ressources can be embedded in a document. If set
-to e.g. <code>require-corp</code> then only ressources that implements CORP or CORS can
+<p>This header controls which resources can be embedded in a document. If set
+to e.g. <code>require-corp</code> then only resources that implements CORP or CORS can
 be embedded. It is not set by default in SecurityHeaders. Read more about this
 header at <a href="https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/Cross-Origin-Embedder-Policy" class="external-link">MDN</a></p>
 </div>
@@ -129,13 +129,13 @@ and about XS-Leaks <a href="https://developer.mozilla.org/docs/Web/Security/Atta
 </div>
 
 <div class="section">
-<h4 id="cross-origin-ressource-policy"><code>Cross-Origin-Ressource-Policy</code><a class="anchor" aria-label="anchor" href="#cross-origin-ressource-policy"></a></h4>
+<h4 id="cross-origin-resource-policy"><code>Cross-Origin-Resource-Policy</code><a class="anchor" aria-label="anchor" href="#cross-origin-resource-policy"></a></h4>
 
 
 <p>This header controls where the given response can be used. If you e.g. return
-an image along with <code>Cross-Origin-Ressource-Policy: same-site</code>, then this
+an image along with <code>Cross-Origin-Resource-Policy: same-site</code>, then this
 image is blocked from being loaded by other sites.
-Read more about this header at <a href="https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/Cross-Origin-Ressource-Policy" class="external-link">MDN</a>
+Read more about this header at <a href="https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/Cross-Origin-Resource-Policy" class="external-link">MDN</a>
 and about CORP in general <a href="https://developer.mozilla.org/docs/Web/Security/Practical_implementation_guides/CORP" class="external-link">in the security guide</a></p>
 </div>
 
@@ -144,7 +144,7 @@ and about CORP in general <a href="https://developer.mozilla.org/docs/Web/Securi
 
 
 <p>This header helps isolate documents served from the same site into separate
-processes. This can improve performance of other tabs if a ressource
+processes. This can improve performance of other tabs if a resource
 intensive tab is opened but also prevent certain information from being
 available to code running in the tab. Read more about this header at
 <a href="https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/Origin-Agent-Cluster" class="external-link">MDN</a></p>
@@ -165,9 +165,9 @@ as well as the <a href="https://developer.mozilla.org/docs/Web/Security/Referer_
 <h4 id="strict-transport-security"><code>Strict-Transport-Security</code><a class="anchor" aria-label="anchor" href="#strict-transport-security"></a></h4>
 
 
-<p>This header informs a browser that the given ressource should only be
+<p>This header informs a browser that the given resource should only be
 accessed using HTTPS. This preference is cached by the browser and the next
-time the ressource is accessed over HTTP it is automatically changed to HTTPS
+time the resource is accessed over HTTP it is automatically changed to HTTPS
 before the request is made. This header should only be sent over HTTPS to
 prevent a manipulator-in-the-middle from alterning its settings. In order for
 this to happen SecurityHeaders will automatically redirect any HTTP requests to
@@ -221,7 +221,7 @@ more about this header at <a href="https://developer.mozilla.org/docs/Web/HTTP/R
 <h4 id="x-permitted-cross-domain-policies"><code>X-Permitted-Cross-Domain-Policies</code><a class="anchor" aria-label="anchor" href="#x-permitted-cross-domain-policies"></a></h4>
 
 
-<p>This header controls cross-origin access of a ressource from a document
+<p>This header controls cross-origin access of a resource from a document
 running in a web client such as Adobe Flash Player or Microsoft Silverlight.
 The demise of these technologies have made this header less important. Read
 more about this header at <a href="https://developer.mozilla.org/docs/Web/HTTP/Reference/Headers/X-Permitted-Cross-Domain-Policies" class="external-link">MDN</a></p>
