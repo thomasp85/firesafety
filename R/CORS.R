@@ -210,7 +210,7 @@ CORS <- R6::R6Class(
           if (allow_credentials) {
             response$set_header("access-control-allow-credentials", "true")
           }
-          response$set_header("access-control-allow-methods", method_string)
+          response$set_header("access-control-allow-methods", toupper(method_string))
           if (is.null(allowed_headers)) {
             vary <- c(vary, "access-control-request-headers")
             allowed_headers <- request$get_header(

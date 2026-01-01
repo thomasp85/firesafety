@@ -183,7 +183,7 @@ test_that("CORS properly handles OPTIONS preflight and actual CORS requests", {
   )
   expect_equal(
     preflight_res$headers[["access-control-allow-methods"]],
-    "get,post"
+    "GET,POST"
   )
   expect_equal(
     preflight_res$headers[["access-control-allow-headers"]],
